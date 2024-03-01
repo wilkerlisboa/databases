@@ -1,0 +1,9 @@
+USE empresa;
+
+CREATE TABLE alunos(
+    N_ALUNOS_ID INT PRIMARY KEY,
+    NOME VARCHAR(50),
+    CPF VARCHAR(50),
+    RG VARCHAR(50),
+    CURSO VARCHAR(50)
+);
