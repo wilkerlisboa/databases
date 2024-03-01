@@ -30,7 +30,7 @@ while True:
     faces = face_cascade.detectMultiScale(gray_frame, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
     # ID do aluno que queremos buscar no banco de dados
-    aluno_id = 1
+    n_id = 1
 
     # Iterando sobre cada rosto encontrado
     for (x, y, w, h) in faces:
@@ -38,7 +38,7 @@ while True:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (148, 0, 211), 2)
 
         # Consultando informações no banco de dados para o aluno com ID 1
-        cursor.execute("SELECT N_ALUNOS_ID, NOME, CPF, RG, CURSO FROM alunos WHERE N_ALUNOS_ID = %s", (aluno_id,))
+        cursor.execute("SELECT N_ID, NOME, CPF, RG, CURSO FROM alunos WHERE N_ID = %s", (n_id,))
         aluno_info = cursor.fetchone()
 
         # Verificando se a consulta retornou resultados
@@ -58,7 +58,7 @@ while True:
                 cv2.putText(frame, line, (x + 150, y + 20 * (i+1)), font, 0.4, (255, 255, 255), 1, cv2.LINE_AA)
 
         else:
-            print(f"Aluno com ID {aluno_id} não encontrado no banco de dados")
+            print(f"Aluno com ID {n_id} não encontrado no banco de dados")
 
     # Exibindo o resultado
     cv2.imshow('ODIN', frame)
